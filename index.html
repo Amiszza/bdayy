@@ -188,7 +188,7 @@
 <body>
 
   <!-- 1. Add your audio element -->
-<audio id="birthdayMusic" loop>
+<audio id="birthdaymusic" loop>
     <source src="birthdaymusic.mp3" type="mp3/mpeg">
     
 </audio>
@@ -258,6 +258,14 @@
             msg.style.display = 'block';
             msg.scrollIntoView({ behavior: 'smooth' });
         }
+
+        const bgm = document.getElementById("birthdaymusic");
+    let musicStarted = false;
+    document.addEventListener("click", () => {
+      if (!musicStarted) {
+        bgm.volume = 0.4;
+        bgm.play();
+        musicStarted = true;
     </script>
 
 </body>
