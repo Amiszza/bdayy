@@ -187,6 +187,31 @@
 </head>
 <body>
 
+  <!-- 1. Add your audio element -->
+<audio id="birthdayMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<!-- 2. Add JavaScript to play music on screen tap/click -->
+<script>
+    // Flag to make sure music only starts once
+    let musicStarted = false;
+
+    document.addEventListener('click', function() {
+        if (!musicStarted) {
+            const music = document.getElementById('birthdayMusic');
+            music.play().then(() => {
+                musicStarted = true;
+                console.log("Music started playing!");
+            }).catch(error => {
+                console.log("Audio play failed: ", error);
+            });
+        }
+    });
+</script>
+
+  
     <header>
         <h1>✨ Happy Birthday! ✨</h1>
         <p class="subtitle">Click on any photo to zoom in!</p>
