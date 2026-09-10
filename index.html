@@ -190,28 +190,11 @@
   <!-- 1. Add your audio element -->
 <audio id="birthdayMusic" loop>
     <source src="birthdaymusic.mp3" type="mp3/mpeg">
-    Your browser does not support the audio element.
+    
 </audio>
 
-<!-- 2. Add JavaScript to play music on screen tap/click -->
-<script>
-    // Flag to make sure music only starts once
-    let musicStarted = false;
 
-    document.addEventListener('click', function() {
-        if (!musicStarted) {
-            const music = document.getElementById('birthdayMusic');
-            music.play().then(() => {
-                musicStarted = true;
-                console.log("Music started playing!");
-            }).catch(error => {
-                console.log("Audio play failed: ", error);
-            });
-        }
-    });
-</script>
 
-  
     <header>
         <h1>✨ Happy Birthday! ✨</h1>
         <p class="subtitle">Click on any photo to zoom in!</p>
@@ -240,9 +223,9 @@
         <div class="message-section" id="secretMessage">
             <h2>A Special Message 💖</h2>
             <p>
-                Happy Birthday, Sweet.
+                Happy Birthday, Elaaa.
 ​Today is all about you. Through everything, you’re still one of the most important people in my life, and that’s never going to change. Seeing you smile and succeed will always be something I care about deeply.
-​I hope this year treats you with the exact same kindness and gentleness you give to everyone around you. Have a wonderful birthday today.            </p>
+​I hope this year treats you with the exact same kindness and gentleness you give to everyone around you. Have a wonderful birthday today! I miss you dearly!           </p>
         </div>
     </section>
 
