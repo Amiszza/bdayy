@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        :root {
+            --navy-dark: #0B192C;
+            --navy-card: #1E3E62;
+            --pink-main: #FF8EAE;
+            --pink-soft: #FFD2E0;
+            --text-light: #F1F6F9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--navy-dark);
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            margin: 40px 0 20px 0;
+        }
+
+        h1 {
+            color: var(--pink-main);
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 12px rgba(255, 142, 174, 0.4);
+        }
+
+        p.subtitle {
+            color: var(--pink-soft);
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        /* Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+            margin: 30px 0;
+        }
+
+        .photo-card {
+            background-color: var(--navy-card);
+            border: 2px solid var(--pink-main);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(255, 142, 174, 0.3);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .click-hint {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--pink-soft);
+            padding: 8px;
+            background: rgba(11, 25, 44, 0.6);
+        }
+
+        /* Message Section & Surprise Button */
+        .interactive-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .btn-surprise {
+            background-color: var(--pink-main);
+            color: var(--navy-dark);
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 142, 174, 0.4);
+            transition: all 0.3s ease;
+            margin-bottom: 25px;
+        }
+
+        .btn-surprise:hover {
+            background-color: var(--pink-soft);
+            transform: scale(1.05);
+        }
+
+        .message-section {
+            background-color: var(--navy-card);
+            border-left: 5px solid var(--pink-main);
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: none; /* Hidden until button click */
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message-section h2 {
+            color: var(--pink-main);
+            margin-bottom: 15px;
+        }
+
+        .message-section p {
+            line-height: 1.6;
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+
+        /* Modal Popup for Photos */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(11, 25, 44, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 85vh;
+            border: 3px solid var(--pink-main);
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(255, 142, 174, 0.5);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: var(--pink-main);
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            color: var(--pink-soft);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>✨ Happy Birthday! ✨</h1>
+        <p class="subtitle">Click on any photo to zoom in!</p>
+    </header>
+
+    <!-- Photo Gallery -->
+    <section class="gallery">
+        <div class="photo-card" onclick="openModal('1000095879.jpg')">
+            <img src="1000095879.jpg" alt="Photo 1">
+            <div class="click-hint">Cutiee</div>
+        </div>
+        <div class="photo-card" onclick="openModal('1000095890.jpg')">
+            <img src="1000095890.jpg" alt="Photo 2">
+            <div class="click-hint">Fretteh</div>
+        </div>
+        <div class="photo-card" onclick="openModal('1000095888.jpg')">
+            <img src="1000095888.jpg" alt="Photo 3">
+            <div class="click-hint">U look so beautiful</div>
+        </div>
+    </section>
+
+    <!-- Interactive Surprise Section -->
+    <section class="interactive-section">
+        <button class="btn-surprise" onclick="revealMessage()">Click for a Special Birthday Wish! 🎁</button>
+
+        <div class="message-section" id="secretMessage">
+            <h2>A Special Message 💖</h2>
+            <p>
+                Happy Birthday, Sweet.
+​Today is all about you. Through everything, you’re still one of the most important people in my life, and that’s never going to change. Seeing you smile and succeed will always be something I care about deeply.
+​I hope this year treats you with the exact same kindness and gentleness you give to everyone around you. Have a wonderful birthday today.            </p>
+        </div>
+    </section>
+
+    <!-- Photo Modal -->
+    <div id="photoModal" class="modal" onclick="closeModal()">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <footer>
+        Made with 💖 for your special day. I love youuu!!
+    </footer>
+
+    <script>
+        // Modal functionality to view full size photo
+        function openModal(src) {
+            const modal = document.getElementById('photoModal');
+            const modalImg = document.getElementById('modalImg');
+            modal.style.display = 'flex';
+            modalImg.src = src;
+        }
+
+        function closeModal() {
+            document.getElementById('photoModal').style.display = 'none';
+        }
+
+        // Reveal hidden message
+        function revealMessage() {
+            const msg = document.getElementById('secretMessage');
+            msg.style.display = 'block';
+            msg.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
